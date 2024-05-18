@@ -1,13 +1,15 @@
 import tkinter as tk
 import ctypes
+from screens.login_screen import LoginScreen
 
-# Configurando DPI
-try:
-    ctypes.windll.shcore.SetProcessDpiAwareness(2)
-except Exception as e:
-    print(e)
+class App:
+    def __init__(self):
+        self.screens = {'login': LoginScreen()}
+        self.current = 'login'
 
-# Aplicação
+    def run(self):
+        self.screens[self.current].run()
 
-main_screen = tk.Tk()
-main_screen.mainloop()
+
+if __name__ == '__main__':
+    App().run()
